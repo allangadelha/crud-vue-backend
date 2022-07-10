@@ -4,14 +4,16 @@ const User = require('../models/User');
 require('dotenv').config();
 
 const SECRET = process.env.SECRET;
+const AUTH_TIME = process.env.AUTH_TIME
 class AuthController {
 
     generateToken(params = {}) {
         return jwt.sign(params, SECRET, {
-            expiresIn: 180
+            expiresIn: AUTH_TIME
         });
     }
-
+    
+    
     async auth(res, data) {
         const { email, password } = data;
         const user = await User.findOne({ email }).select('+password');
@@ -50,6 +52,7 @@ class AuthController {
                 status: 200,
                 message: "Usuário encontrado com sucesso.",
                 user,
+                expiration: `${AUTH_TIME} secunds.`,
                 token: this.generateToken({ id: user.id })
             });
         });
