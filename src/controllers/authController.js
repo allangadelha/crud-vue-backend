@@ -9,7 +9,7 @@ class AuthController {
 
     generateToken(params = {}) {
         return jwt.sign(params, SECRET, {
-            expiresIn: AUTH_TIME
+            expiresIn: 1800
         });
     }
     
