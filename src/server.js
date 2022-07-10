@@ -8,4 +8,6 @@ authRoutes.use(clientsRoutes);
 
 const PORT = process.env.PROJECT_PORT || 3001;
 
-authRoutes.listen(PORT, console.log(`Rodando na porta ${PORT}`));
+authRoutes.listen(process.env.PORT || 3000, function(){
+  console.log("Express server listening on port %d in %s mode", this.address().port, app.settings.env);
+});
