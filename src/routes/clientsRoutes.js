@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const { db } = require('../database/db');
 const { clientController } = require('../controllers/clientController');
 const authMiddleware = require('../middlewares/auth');
 const clientsRoutes = express();
