@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 
+const { db } = require('../database/db');
 const { userController } = require('../controllers/userController');
 const usersRoutes = express();
 const authMiddleware = require('../middlewares/auth');
